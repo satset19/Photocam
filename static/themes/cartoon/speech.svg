@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+  <g stroke="#111" stroke-width="4" stroke-linejoin="round">
+    <path d="M20 20 Q20 10 30 10 H170 Q180 10 180 20 V70 Q180 80 170 80 H80 L50 110 L55 80 H30 Q20 80 20 70 Z"
+      fill="#ffffff"/>
+  </g>
+  <text x="100" y="55" text-anchor="middle" font-family="Impact, sans-serif" font-size="38" fill="#ff3a7b">POW!</text>
+</svg>

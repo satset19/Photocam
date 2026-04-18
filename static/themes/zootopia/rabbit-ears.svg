@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" width="120" height="160">
+  <defs>
+    <linearGradient id="earG" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#f5e0e9"/>
+      <stop offset="1" stop-color="#d9a8b8"/>
+    </linearGradient>
+    <linearGradient id="innerEarG" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffb5cc"/>
+      <stop offset="1" stop-color="#ff7ca8"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#2e1b21" stroke-width="3" stroke-linejoin="round">
+    <ellipse cx="35" cy="70" rx="22" ry="65" fill="url(#earG)" transform="rotate(-10 35 70)"/>
+    <ellipse cx="85" cy="70" rx="22" ry="65" fill="url(#earG)" transform="rotate(10 85 70)"/>
+    <ellipse cx="35" cy="80" rx="10" ry="45" fill="url(#innerEarG)" transform="rotate(-10 35 80)"/>
+    <ellipse cx="85" cy="80" rx="10" ry="45" fill="url(#innerEarG)" transform="rotate(10 85 80)"/>
+  </g>
+</svg>

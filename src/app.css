@@ -1,0 +1,117 @@
+@import 'tailwindcss';
+
+/* ---------- Theme tokens -------------------------------------------------- */
+/* Switchable via <html data-theme="minimalist|kawaii|playful">.             */
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+
+  --radius-card: 1.25rem;
+  --radius-pill: 9999px;
+}
+
+:root,
+[data-theme='minimalist'] {
+  --color-surface: oklch(0.99 0 0);
+  --color-surface-raised: oklch(0.97 0 0);
+  --color-on-surface: oklch(0.18 0.01 260);
+  --color-muted: oklch(0.55 0.01 260);
+  --color-primary: oklch(0.45 0.15 260);
+  --color-primary-fg: oklch(0.99 0 0);
+  --color-accent: oklch(0.75 0.15 100);
+  --color-border: oklch(0.9 0 0);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 30px -15px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme='kawaii'] {
+  --color-surface: oklch(0.97 0.02 340);
+  --color-surface-raised: oklch(0.99 0.015 340);
+  --color-on-surface: oklch(0.3 0.05 340);
+  --color-muted: oklch(0.6 0.05 340);
+  --color-primary: oklch(0.7 0.18 350);
+  --color-primary-fg: oklch(0.99 0 0);
+  --color-accent: oklch(0.85 0.1 200);
+  --color-border: oklch(0.88 0.04 340);
+  --shadow-card: 0 4px 20px -4px rgba(255, 160, 200, 0.35);
+}
+
+[data-theme='playful'] {
+  --color-surface: oklch(0.15 0.04 280);
+  --color-surface-raised: oklch(0.22 0.05 280);
+  --color-on-surface: oklch(0.98 0.01 90);
+  --color-muted: oklch(0.72 0.04 280);
+  --color-primary: oklch(0.78 0.2 140);
+  --color-primary-fg: oklch(0.15 0.04 280);
+  --color-accent: oklch(0.75 0.2 30);
+  --color-border: oklch(0.3 0.04 280);
+  --shadow-card: 0 8px 30px -10px rgba(0, 255, 180, 0.25);
+}
+
+/* Expose tokens as Tailwind colors. */
+@theme inline {
+  --color-surface: var(--color-surface);
+  --color-surface-raised: var(--color-surface-raised);
+  --color-on-surface: var(--color-on-surface);
+  --color-muted: var(--color-muted);
+  --color-primary: var(--color-primary);
+  --color-primary-fg: var(--color-primary-fg);
+  --color-accent: var(--color-accent);
+  --color-border: var(--color-border);
+  --shadow-card: var(--shadow-card);
+}
+
+/* ---------- Globals ------------------------------------------------------- */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Hide scrollbar for horizontal filter/sticker trays while keeping scroll. */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animated gradient used on landing hero. */
+@keyframes gradient-pan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-pan {
+  background-size: 200% 200%;
+  animation: gradient-pan 12s ease infinite;
+}
