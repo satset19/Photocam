@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Decoration, StripTheme } from '$lib/stripThemes/types';
+  import type { Decoration, SlotOverride, StripTheme } from '$lib/stripThemes/types';
 
   interface Props {
     theme: StripTheme;
@@ -63,13 +63,13 @@
   const gradId = $derived(`tg_${theme.id.replace(/[^a-z0-9]/gi, '_')}`);
 
   // Slot geometri: override > default strip (4 slot vertikal).
-  const defaultSlots = [
+  const defaultSlots: SlotOverride[] = [
     { x: 0.06, y: 0.03, w: 0.88, h: 0.215, rotation: 0, radius: 0.04 },
     { x: 0.06, y: 0.255, w: 0.88, h: 0.215, rotation: 0, radius: 0.04 },
     { x: 0.06, y: 0.48, w: 0.88, h: 0.215, rotation: 0, radius: 0.04 },
     { x: 0.06, y: 0.705, w: 0.88, h: 0.215, rotation: 0, radius: 0.04 }
   ];
-  const slots = $derived(theme.layouts?.strip?.slots ?? defaultSlots);
+  const slots: SlotOverride[] = $derived(theme.layouts?.strip?.slots ?? defaultSlots);
 
   // Decorations: theme + layout override, filter yang relevan untuk thumbnail.
   const allDecos = $derived<Decoration[]>([

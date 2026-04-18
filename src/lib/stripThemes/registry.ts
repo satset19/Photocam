@@ -159,7 +159,53 @@ export const STRIP_THEMES: readonly StripTheme[] = [
       img('/themes/anime/sparkle.svg', 0.88, 0.88, 0.07, 'foreground', 0, 1),
       img('/themes/anime/heart.svg', 0.05, 0.92, 0.09, 'foreground', -15, 1)
     ],
-    slotBorder: { color: '#ff6fa5', width: 3, radius: 0.06 }
+    slotBorder: { color: '#ff6fa5', width: 3, radius: 0.06 },
+    layouts: {
+      strip: {
+        aspect: 0.55,
+        // Slot asimetri: kiri-kanan bergantian dengan sakura di pojok kosong.
+        slots: [
+          {
+            x: 0.08, y: 0.1, w: 0.62, h: 0.19, radius: 0.08,
+            border: { color: '#ff6fa5', width: 3 },
+            perSlotDecorations: [
+              img('/themes/anime/sakura.svg', 1.05, -0.05, 0.3, 'foreground', -15, 1)
+            ]
+          },
+          {
+            x: 0.3, y: 0.31, w: 0.62, h: 0.19, radius: 0.08,
+            border: { color: '#ff6fa5', width: 3 },
+            perSlotDecorations: [
+              img('/themes/anime/sakura.svg', -0.1, -0.05, 0.28, 'foreground', 20, 1)
+            ]
+          },
+          {
+            x: 0.08, y: 0.52, w: 0.62, h: 0.19, radius: 0.08,
+            border: { color: '#ff6fa5', width: 3 },
+            perSlotDecorations: [
+              img('/themes/anime/heart.svg', 1.04, 0.9, 0.22, 'foreground', 15, 1)
+            ]
+          },
+          {
+            x: 0.3, y: 0.73, w: 0.62, h: 0.19, radius: 0.08,
+            border: { color: '#ff6fa5', width: 3 },
+            perSlotDecorations: [
+              img('/themes/anime/sparkle.svg', -0.08, 0.85, 0.18, 'foreground', 0, 1)
+            ]
+          }
+        ],
+        decorations: [
+          img('/themes/anime/sakura.svg', 0.01, 0.01, 0.1, 'background', -20, 0.9),
+          img('/themes/anime/sakura.svg', 0.92, 0.94, 0.1, 'background', 40, 0.85)
+        ],
+        header: {
+          text: '✿ 花見 · HANAMI ✿',
+          font: "italic 900 20px 'Playfair Display', serif",
+          color: '#6b2a8a',
+          y: 0.055
+        }
+      }
+    }
   },
   {
     id: 'kawaii',
@@ -185,27 +231,47 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'y2k',
     label: 'Y2K',
-    tagline: 'Butterflies + holographic.',
+    tagline: 'Tilted slots + holo butterflies.',
     preview: 'linear-gradient(135deg,#9c5bff,#ff5bd1,#5bcfff)',
     tags: ['retro', 'bold'],
-    keywords: ['y2k', '2000s', 'butterfly'],
+    keywords: ['y2k', '2000s', 'butterfly', 'holo', 'chrome'],
     background: {
       kind: 'linear',
       value: 'linear-gradient(135deg,#9c5bff 0%,#ff5bd1 50%,#5bcfff 100%)'
     },
     caption: {
-      text: '*・゜ 2K FOREVER ゜・*  {date}',
+      text: '♡ 2K 4EVR ♡ {date}',
       font: "900 20px 'Space Grotesk', sans-serif",
       color: '#ffffff'
     },
-    decorations: [
-      img('/themes/y2k/star.svg', 0.03, 0.04, 0.1, 'background', 0, 0.9),
-      img('/themes/y2k/star.svg', 0.9, 0.35, 0.08, 'background', 0, 0.85),
-      img('/themes/y2k/star.svg', 0.08, 0.68, 0.07, 'background', 0, 1),
-      img('/themes/y2k/butterfly.svg', 0.72, 0.02, 0.22, 'foreground', -12, 1),
-      img('/themes/y2k/butterfly.svg', 0.02, 0.88, 0.2, 'foreground', 18, 0.95)
-    ],
-    slotBorder: { color: '#ffffff', width: 3, radius: 0.07 }
+    decorations: [],
+    slotBorder: { color: '#fff', width: 3, radius: 0.12 },
+    layouts: {
+      strip: {
+        aspect: 0.55,
+        slots: [
+          // Slot zig-zag berselang rotation.
+          { x: 0.1, y: 0.11, w: 0.8, h: 0.2, rotation: -4, radius: 0.12, border: { color: '#fff', width: 3 } },
+          { x: 0.1, y: 0.33, w: 0.8, h: 0.2, rotation: 4, radius: 0.12, border: { color: '#fff', width: 3 } },
+          { x: 0.1, y: 0.55, w: 0.8, h: 0.2, rotation: -4, radius: 0.12, border: { color: '#fff', width: 3 } },
+          { x: 0.1, y: 0.77, w: 0.8, h: 0.09, rotation: 4, radius: 0.12, border: { color: '#fff', width: 3 } }
+        ],
+        decorations: [
+          img('/themes/y2k/butterfly.svg', 0.72, 0.015, 0.22, 'foreground', -12, 1),
+          img('/themes/y2k/butterfly.svg', 0.02, 0.86, 0.2, 'foreground', 18, 0.95),
+          img('/themes/y2k/star.svg', 0.04, 0.03, 0.08, 'foreground', 0, 1),
+          img('/themes/y2k/star.svg', 0.9, 0.94, 0.07, 'foreground', 0, 1),
+          emoji('♡', 0.04, 0.55, 0.04, 'foreground', 0, 1, '#fff'),
+          emoji('♡', 0.96, 0.55, 0.04, 'foreground', 0, 1, '#fff')
+        ],
+        header: {
+          text: '☆ ~*~ BFF 4EVER ~*~ ☆',
+          font: "900 18px 'Space Grotesk', sans-serif",
+          color: '#fff',
+          y: 0.065
+        }
+      }
+    }
   },
   {
     id: 'retro',
@@ -405,24 +471,62 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'space',
     label: 'Space',
-    tagline: 'Cosmos planets + rocket trail.',
-    preview: 'linear-gradient(135deg,#0a0e2e,#3a1b6e,#0a0e2e)',
+    tagline: 'Portholes + starmap constellation.',
+    preview: 'linear-gradient(135deg,#0a0e2e,#3a1b6e)',
     tags: ['aesthetic', 'dark'],
-    keywords: ['space', 'galaxy', 'cosmos', 'planets'],
-    background: { kind: 'linear', value: 'linear-gradient(160deg,#060c2b 0%,#2a1566 50%,#060c2b 100%)' },
+    keywords: ['space', 'galaxy', 'cosmos', 'planets', 'nasa', 'astronaut'],
+    background: {
+      kind: 'linear',
+      value: 'radial-gradient(#fff 1px,transparent 1px) ,linear-gradient(160deg,#060c2b 0%,#2a1566 100%)'
+    },
     caption: {
-      text: 'To the Stars · {date}',
-      font: "bold 22px 'Space Grotesk', sans-serif",
+      text: 'Mission · {date}',
+      font: "900 18px monospace",
       color: '#ffe6a0'
     },
-    decorations: [
-      emoji('🌌', 0.04, 0.04, 0.12, 'foreground', 0, 1),
-      emoji('🪐', 0.9, 0.06, 0.12, 'foreground', 0, 1),
-      emoji('🚀', 0.05, 0.9, 0.1, 'foreground', -30, 1),
-      emoji('✨', 0.9, 0.88, 0.07, 'foreground', 0, 1),
-      emoji('⭐', 0.5, 0.05, 0.04, 'background', 0, 0.9)
-    ],
-    slotBorder: { color: '#ffe6a0', width: 2, radius: 0.04 }
+    decorations: [],
+    slotBorder: { color: '#ffe6a0', width: 3, radius: 0.5 },
+    layouts: {
+      strip: {
+        aspect: 0.42,
+        background: { kind: 'linear', value: 'linear-gradient(160deg,#060c2b 0%,#2a1566 100%)' },
+        // 4 porthole bulat (radius tinggi).
+        slots: [
+          { x: 0.1, y: 0.07, w: 0.35, h: 0.2, radius: 0.5, border: { color: '#fbbf24', width: 4 } },
+          { x: 0.55, y: 0.07, w: 0.35, h: 0.2, radius: 0.5, border: { color: '#fbbf24', width: 4 } },
+          { x: 0.1, y: 0.3, w: 0.35, h: 0.2, radius: 0.5, border: { color: '#fbbf24', width: 4 } },
+          { x: 0.55, y: 0.3, w: 0.35, h: 0.2, radius: 0.5, border: { color: '#fbbf24', width: 4 } }
+        ],
+        decorations: [
+          // Bintang scatter.
+          emoji('⭐', 0.08, 0.58, 0.025, 'background', 0, 0.8, '#fff'),
+          emoji('⭐', 0.25, 0.62, 0.018, 'background', 0, 0.7, '#fff'),
+          emoji('⭐', 0.4, 0.6, 0.022, 'background', 0, 0.85, '#fff'),
+          emoji('⭐', 0.55, 0.64, 0.02, 'background', 0, 0.75, '#fff'),
+          emoji('⭐', 0.72, 0.58, 0.025, 'background', 0, 0.9, '#fff'),
+          emoji('⭐', 0.88, 0.62, 0.018, 'background', 0, 0.7, '#fff'),
+          emoji('⭐', 0.15, 0.73, 0.022, 'background', 0, 0.8, '#fff'),
+          emoji('⭐', 0.5, 0.77, 0.03, 'background', 0, 1, '#fff'),
+          emoji('⭐', 0.82, 0.73, 0.02, 'background', 0, 0.7, '#fff'),
+          // Planets + rocket.
+          emoji('🪐', 0.12, 0.68, 0.08, 'foreground', 0, 1),
+          emoji('🌙', 0.8, 0.68, 0.08, 'foreground', 0, 1),
+          emoji('🚀', 0.5, 0.85, 0.09, 'foreground', -15, 1)
+        ],
+        header: {
+          text: '◆ APOLLO · CH 03 · 2026 ◆',
+          font: "900 18px monospace",
+          color: '#ffe6a0',
+          y: 0.028
+        },
+        footer: {
+          text: 'Δ 384,400 km from home · {date}',
+          font: "900 14px monospace",
+          color: '#ffe6a0',
+          y: 0.97
+        }
+      }
+    }
   },
   {
     id: 'galaxy',
@@ -448,23 +552,51 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'ocean',
     label: 'Ocean Deep',
-    tagline: 'Azure waves + marine life.',
-    preview: 'linear-gradient(135deg,#0a5a8a,#4fc3f7)',
+    tagline: 'Wavy slots + marine creatures.',
+    preview: 'linear-gradient(135deg,#0a2a4a,#4fc3f7)',
     tags: ['nature', 'aesthetic'],
-    keywords: ['ocean', 'sea', 'blue', 'water'],
-    background: { kind: 'linear', value: 'linear-gradient(180deg,#0a5a8a 0%,#4fc3f7 100%)' },
+    keywords: ['ocean', 'sea', 'blue', 'water', 'wave', 'underwater'],
+    background: { kind: 'linear', value: 'linear-gradient(180deg,#0a2a4a 0%,#0891b2 50%,#4fc3f7 100%)' },
     caption: {
-      text: 'Under the Sea · {date}',
-      font: "bold 22px 'Space Grotesk', sans-serif",
+      text: '〜 Under the Sea · {date} 〜',
+      font: "italic 700 20px 'Space Grotesk', sans-serif",
       color: '#fff5e5'
     },
-    decorations: [
-      emoji('🌊', 0.05, 0.04, 0.11, 'foreground', 0, 1),
-      emoji('🐠', 0.88, 0.08, 0.1, 'foreground', -10, 1),
-      emoji('🐚', 0.9, 0.88, 0.09, 'foreground', 20, 1),
-      emoji('🐙', 0.05, 0.88, 0.1, 'foreground', 0, 0.95)
-    ],
-    slotBorder: { color: '#fff5e5', width: 2, radius: 0.05 }
+    decorations: [],
+    slotBorder: { color: '#fff5e5', width: 2, radius: 0.08 },
+    layouts: {
+      strip: {
+        aspect: 0.55,
+        slots: [
+          // Gelombang: slot bergeser horizontal bergantian.
+          { x: 0.16, y: 0.11, w: 0.7, h: 0.18, rotation: -2, radius: 0.1, border: { color: '#fff5e5', width: 3 } },
+          { x: 0.1, y: 0.32, w: 0.7, h: 0.18, rotation: 2, radius: 0.1, border: { color: '#fff5e5', width: 3 } },
+          { x: 0.2, y: 0.53, w: 0.7, h: 0.18, rotation: -2, radius: 0.1, border: { color: '#fff5e5', width: 3 } },
+          { x: 0.1, y: 0.74, w: 0.7, h: 0.18, rotation: 2, radius: 0.1, border: { color: '#fff5e5', width: 3 } }
+        ],
+        decorations: [
+          // Bubbles background.
+          emoji('🫧', 0.06, 0.25, 0.03, 'background', 0, 0.7),
+          emoji('🫧', 0.94, 0.16, 0.025, 'background', 0, 0.6),
+          emoji('🫧', 0.05, 0.46, 0.02, 'background', 0, 0.6),
+          emoji('🫧', 0.95, 0.48, 0.035, 'background', 0, 0.7),
+          emoji('🫧', 0.04, 0.67, 0.022, 'background', 0, 0.6),
+          emoji('🫧', 0.96, 0.68, 0.028, 'background', 0, 0.65),
+          // Fish.
+          emoji('🐠', 0.05, 0.15, 0.05, 'foreground', 10, 1),
+          emoji('🐡', 0.93, 0.38, 0.045, 'foreground', -15, 1),
+          emoji('🐙', 0.07, 0.95, 0.07, 'foreground', 0, 1),
+          emoji('🐚', 0.93, 0.95, 0.06, 'foreground', 15, 1),
+          emoji('🐢', 0.5, 0.04, 0.06, 'foreground', 0, 0.95)
+        ],
+        header: {
+          text: '🌊 DEEP DIVE 🌊',
+          font: "900 20px 'Space Grotesk', sans-serif",
+          color: '#fff5e5',
+          y: 0.055
+        }
+      }
+    }
   },
   {
     id: 'sakura',
@@ -533,23 +665,56 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'christmas',
     label: 'Christmas',
-    tagline: 'Red + green merry cheer.',
-    preview: 'linear-gradient(135deg,#b91c1c,#166534)',
+    tagline: 'Ornament garland + gift tag.',
+    preview: 'linear-gradient(135deg,#991b1b,#14532d)',
     tags: ['seasonal'],
-    keywords: ['christmas', 'xmas', 'natal', 'tree', 'gift'],
-    background: { kind: 'linear', value: 'linear-gradient(135deg,#991b1b 0%,#14532d 100%)' },
+    keywords: ['christmas', 'xmas', 'natal', 'tree', 'gift', 'santa'],
+    background: { kind: 'linear', value: 'linear-gradient(180deg,#7f1d1d 0%,#14532d 100%)' },
     caption: {
-      text: 'Merry Christmas · {date}',
-      font: "900 22px 'Space Grotesk', serif",
+      text: '🎄 Merry Christmas · {date}',
+      font: "900 20px 'Space Grotesk', serif",
       color: '#fef3c7'
     },
-    decorations: [
-      emoji('🎄', 0.05, 0.04, 0.13, 'foreground', 0, 1),
-      emoji('🎁', 0.88, 0.08, 0.11, 'foreground', 5, 1),
-      emoji('⛄', 0.05, 0.88, 0.11, 'foreground', 0, 1),
-      emoji('🔔', 0.9, 0.88, 0.09, 'foreground', -15, 1)
-    ],
-    slotBorder: { color: '#fef3c7', width: 3, radius: 0.04 }
+    decorations: [],
+    slotBorder: { color: '#fef3c7', width: 3, radius: 0.06 },
+    layouts: {
+      strip: {
+        aspect: 0.55,
+        background: { kind: 'linear', value: 'linear-gradient(180deg,#7f1d1d 0%,#14532d 100%)' },
+        slots: [
+          { x: 0.14, y: 0.14, w: 0.72, h: 0.17, radius: 0.06, border: { color: '#fef3c7', width: 3 } },
+          { x: 0.14, y: 0.335, w: 0.72, h: 0.17, radius: 0.06, border: { color: '#fef3c7', width: 3 } },
+          { x: 0.14, y: 0.53, w: 0.72, h: 0.17, radius: 0.06, border: { color: '#fef3c7', width: 3 } },
+          { x: 0.14, y: 0.725, w: 0.72, h: 0.17, radius: 0.06, border: { color: '#fef3c7', width: 3 } }
+        ],
+        decorations: [
+          // Garland atas.
+          rect(0.5, 0.09, 0.95, 0.004, '#fef3c7', { placement: 'foreground' }),
+          emoji('🎄', 0.05, 0.09, 0.04, 'foreground', 0, 1),
+          emoji('⭐', 0.2, 0.09, 0.03, 'foreground', 0, 1, '#facc15'),
+          emoji('🔔', 0.35, 0.09, 0.035, 'foreground', -10, 1),
+          emoji('❄️', 0.5, 0.09, 0.035, 'foreground', 0, 1),
+          emoji('🎁', 0.65, 0.09, 0.035, 'foreground', 10, 1),
+          emoji('⭐', 0.8, 0.09, 0.03, 'foreground', 0, 1, '#facc15'),
+          emoji('🎅', 0.95, 0.09, 0.04, 'foreground', 0, 1),
+          // Ornament antar slot (kiri-kanan bergantian warna).
+          emoji('🔴', 0.05, 0.245, 0.035, 'foreground', 0, 1),
+          emoji('🟢', 0.95, 0.245, 0.035, 'foreground', 0, 1),
+          emoji('🟢', 0.05, 0.44, 0.035, 'foreground', 0, 1),
+          emoji('🔴', 0.95, 0.44, 0.035, 'foreground', 0, 1),
+          emoji('🔴', 0.05, 0.635, 0.035, 'foreground', 0, 1),
+          emoji('🟢', 0.95, 0.635, 0.035, 'foreground', 0, 1),
+          emoji('⛄', 0.08, 0.95, 0.06, 'foreground', 0, 1),
+          emoji('🎁', 0.92, 0.95, 0.06, 'foreground', -10, 1)
+        ],
+        header: {
+          text: '✦ HO HO HO ✦',
+          font: "900 22px 'Playfair Display', Georgia, serif",
+          color: '#fef3c7',
+          y: 0.04
+        }
+      }
+    }
   },
   {
     id: 'halloween',
@@ -575,23 +740,59 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'valentine',
     label: 'Valentine',
-    tagline: 'Red hearts + romance.',
+    tagline: 'Love letter with heart seal.',
     preview: 'linear-gradient(135deg,#ff5e87,#ffbfd3)',
     tags: ['seasonal', 'cute'],
-    keywords: ['valentine', 'love', 'heart', 'romance'],
-    background: { kind: 'linear', value: 'linear-gradient(160deg,#ffbfd3 0%,#ff5e87 100%)' },
+    keywords: ['valentine', 'love', 'heart', 'romance', 'pacar'],
+    background: { kind: 'linear', value: 'linear-gradient(160deg,#ffe4ec 0%,#ff5e87 100%)' },
     caption: {
-      text: 'Be My Valentine · {date}',
-      font: "italic 700 22px 'Space Grotesk', serif",
+      text: '♡ Be Mine · {date} ♡',
+      font: "italic 700 22px 'Playfair Display', serif",
       color: '#6b0f2d'
     },
-    decorations: [
-      emoji('❤️', 0.05, 0.04, 0.1, 'foreground', -10, 1),
-      emoji('💐', 0.88, 0.07, 0.11, 'foreground', 0, 1),
-      emoji('🌹', 0.06, 0.88, 0.1, 'foreground', 15, 1),
-      emoji('💌', 0.88, 0.88, 0.1, 'foreground', -10, 1)
-    ],
-    slotBorder: { color: '#6b0f2d', width: 2, radius: 0.07 }
+    decorations: [],
+    slotBorder: { color: '#fff', width: 3, radius: 0.08 },
+    layouts: {
+      strip: {
+        aspect: 0.55,
+        slots: [
+          {
+            x: 0.12, y: 0.14, w: 0.76, h: 0.18, radius: 0.1,
+            border: { color: '#fff', width: 3 },
+            perSlotDecorations: [emoji('♡', 0.95, 0.1, 0.12, 'foreground', 0, 1, '#ff5e87')]
+          },
+          {
+            x: 0.12, y: 0.34, w: 0.76, h: 0.18, radius: 0.1,
+            border: { color: '#fff', width: 3 },
+            perSlotDecorations: [emoji('♡', 0.05, 0.1, 0.1, 'foreground', 0, 1, '#ff5e87')]
+          },
+          {
+            x: 0.12, y: 0.54, w: 0.76, h: 0.18, radius: 0.1,
+            border: { color: '#fff', width: 3 },
+            perSlotDecorations: [emoji('♡', 0.95, 0.85, 0.11, 'foreground', 0, 1, '#ff5e87')]
+          },
+          {
+            x: 0.12, y: 0.74, w: 0.76, h: 0.18, radius: 0.1,
+            border: { color: '#fff', width: 3 },
+            perSlotDecorations: [emoji('♡', 0.05, 0.85, 0.1, 'foreground', 0, 1, '#ff5e87')]
+          }
+        ],
+        decorations: [
+          emoji('❤', 0.05, 0.06, 0.05, 'foreground', -15, 1, '#dc2626'),
+          emoji('💐', 0.92, 0.05, 0.065, 'foreground', 0, 1),
+          emoji('🌹', 0.05, 0.96, 0.06, 'foreground', 15, 1),
+          emoji('💌', 0.93, 0.96, 0.055, 'foreground', -10, 1),
+          // Love letter envelope background streak.
+          rect(0.5, 0.09, 0.88, 0.02, '#fff', { placement: 'background', opacity: 0.3 })
+        ],
+        header: {
+          text: '❥ XOXO ❥',
+          font: "italic 900 20px 'Playfair Display', serif",
+          color: '#fff',
+          y: 0.055
+        }
+      }
+    }
   },
   {
     id: 'easter',
@@ -620,26 +821,60 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'birthday',
     label: 'Birthday',
-    tagline: 'Cake + confetti + balloons.',
+    tagline: 'Confetti rain + party banner.',
     preview: 'linear-gradient(135deg,#fbcfe8,#93c5fd,#fde68a)',
     tags: ['seasonal', 'cute'],
-    keywords: ['birthday', 'cake', 'party', 'balloon'],
+    keywords: ['birthday', 'cake', 'party', 'balloon', 'ultah'],
     background: {
       kind: 'linear',
       value: 'linear-gradient(135deg,#fbcfe8 0%,#93c5fd 50%,#fde68a 100%)'
     },
     caption: {
-      text: 'Happy Birthday · {date}',
-      font: "900 22px 'Space Grotesk', sans-serif",
+      text: '🎂 Happy Birthday · {date}',
+      font: "900 20px 'Space Grotesk', sans-serif",
       color: '#6b21a8'
     },
-    decorations: [
-      emoji('🎂', 0.06, 0.04, 0.12, 'foreground', 0, 1),
-      emoji('🎈', 0.88, 0.06, 0.12, 'foreground', -10, 1),
-      emoji('🎉', 0.05, 0.88, 0.12, 'foreground', 15, 1),
-      emoji('🎁', 0.88, 0.88, 0.11, 'foreground', 0, 1)
-    ],
-    slotBorder: { color: '#6b21a8', width: 3, radius: 0.07 }
+    decorations: [],
+    slotBorder: { color: '#6b21a8', width: 3, radius: 0.07 },
+    layouts: {
+      strip: {
+        aspect: 0.52,
+        slots: [
+          { x: 0.06, y: 0.17, w: 0.88, h: 0.17, radius: 0.08, border: { color: '#6b21a8', width: 3 } },
+          { x: 0.06, y: 0.36, w: 0.88, h: 0.17, radius: 0.08, border: { color: '#6b21a8', width: 3 } },
+          { x: 0.06, y: 0.55, w: 0.88, h: 0.17, radius: 0.08, border: { color: '#6b21a8', width: 3 } },
+          { x: 0.06, y: 0.74, w: 0.88, h: 0.17, radius: 0.08, border: { color: '#6b21a8', width: 3 } }
+        ],
+        decorations: [
+          // Confetti scatter background.
+          emoji('✦', 0.08, 0.28, 0.02, 'background', 15, 0.8, '#ec4899'),
+          emoji('✦', 0.22, 0.47, 0.025, 'background', -20, 0.8, '#3b82f6'),
+          emoji('✦', 0.78, 0.3, 0.022, 'background', 30, 0.8, '#f59e0b'),
+          emoji('✦', 0.92, 0.5, 0.02, 'background', 0, 0.8, '#22c55e'),
+          emoji('✦', 0.12, 0.65, 0.025, 'background', 45, 0.8, '#a855f7'),
+          emoji('✦', 0.88, 0.7, 0.023, 'background', -15, 0.8, '#ec4899'),
+          emoji('•', 0.3, 0.25, 0.015, 'background', 0, 0.7, '#3b82f6'),
+          emoji('•', 0.7, 0.26, 0.015, 'background', 0, 0.7, '#ec4899'),
+          emoji('•', 0.35, 0.77, 0.015, 'background', 0, 0.7, '#f59e0b'),
+          emoji('•', 0.62, 0.78, 0.015, 'background', 0, 0.7, '#22c55e'),
+          // Balloon string atas.
+          emoji('🎈', 0.1, 0.04, 0.06, 'foreground', -10, 1),
+          emoji('🎈', 0.24, 0.05, 0.055, 'foreground', 10, 1),
+          emoji('🎂', 0.5, 0.04, 0.07, 'foreground', 0, 1),
+          emoji('🎈', 0.76, 0.05, 0.055, 'foreground', -10, 1),
+          emoji('🎈', 0.9, 0.04, 0.06, 'foreground', 10, 1),
+          // Bottom.
+          emoji('🎉', 0.08, 0.95, 0.06, 'foreground', -10, 1),
+          emoji('🎁', 0.92, 0.95, 0.06, 'foreground', 10, 1)
+        ],
+        header: {
+          text: '♡ PARTY TIME ♡',
+          font: "900 22px 'Space Grotesk', sans-serif",
+          color: '#6b21a8',
+          y: 0.125
+        }
+      }
+    }
   },
   {
     id: 'wedding',
@@ -707,23 +942,39 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'cyberpunk',
     label: 'Cyberpunk',
-    tagline: 'Neon magenta + cyan grid.',
-    preview: 'linear-gradient(135deg,#ff00ea,#00eaff)',
+    tagline: 'Diagonal neon glitch cards.',
+    preview: 'linear-gradient(135deg,#0d0028,#ff00ea)',
     tags: ['bold', 'dark', 'retro'],
-    keywords: ['cyberpunk', 'neon', 'futuristic', 'tech'],
-    background: { kind: 'linear', value: 'linear-gradient(135deg,#0d0028 0%,#ff00ea 50%,#00eaff 100%)' },
+    keywords: ['cyberpunk', 'neon', 'futuristic', 'tech', '2077', 'glitch'],
+    background: { kind: 'linear', value: 'linear-gradient(135deg,#0d0028 0%,#1a0a3a 60%,#2e0658 100%)' },
     caption: {
-      text: 'RUN THE NET · {date}',
-      font: "900 22px 'Space Grotesk', monospace",
+      text: '> RUN THE NET · {date}',
+      font: "900 18px monospace",
       color: '#00eaff'
     },
-    decorations: [
-      emoji('🌆', 0.05, 0.04, 0.12, 'foreground', 0, 1),
-      emoji('⚡', 0.88, 0.08, 0.1, 'foreground', -15, 1),
-      emoji('🤖', 0.05, 0.88, 0.11, 'foreground', 0, 1),
-      emoji('💾', 0.88, 0.88, 0.1, 'foreground', 10, 1)
-    ],
-    slotBorder: { color: '#00eaff', width: 3, radius: 0.03 }
+    decorations: [],
+    slotBorder: { color: '#00eaff', width: 3, radius: 0 },
+    layouts: {
+      strip: {
+        aspect: 0.48,
+        slots: [
+          // 4 slot miring bergantian.
+          { x: 0.08, y: 0.1, w: 0.84, h: 0.17, rotation: -3, radius: 0, border: { color: '#ff00ea', width: 3 } },
+          { x: 0.08, y: 0.3, w: 0.84, h: 0.17, rotation: 3, radius: 0, border: { color: '#00eaff', width: 3 } },
+          { x: 0.08, y: 0.5, w: 0.84, h: 0.17, rotation: -3, radius: 0, border: { color: '#ff00ea', width: 3 } },
+          { x: 0.08, y: 0.7, w: 0.84, h: 0.17, rotation: 3, radius: 0, border: { color: '#00eaff', width: 3 } }
+        ],
+        decorations: [
+          // Glitch bar.
+          rect(0.5, 0.056, 0.8, 0.012, '#ff00ea', { placement: 'foreground', opacity: 0.9 }),
+          rect(0.45, 0.07, 0.7, 0.005, '#00eaff', { placement: 'foreground', opacity: 0.8 }),
+          emoji('[ SYS_BREACH::01 ]', 0.5, 0.095, 0.03, 'foreground', 0, 1, '#00eaff'),
+          emoji('◀◀', 0.06, 0.95, 0.03, 'foreground', 0, 1, '#ff00ea'),
+          emoji('▶▶', 0.94, 0.95, 0.03, 'foreground', 0, 1, '#00eaff'),
+          emoji('⚠', 0.1, 0.05, 0.03, 'foreground', 0, 1, '#facc15')
+        ]
+      }
+    }
   },
   {
     id: 'vaporwave',
@@ -752,26 +1003,51 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'memphis',
     label: 'Memphis 80s',
-    tagline: 'Bold geometric + squiggles.',
+    tagline: 'Geometric shapes + squiggles.',
     preview: 'linear-gradient(135deg,#fde047,#f472b6,#22d3ee)',
     tags: ['bold', 'retro'],
-    keywords: ['memphis', '80s', 'geometric'],
-    background: {
-      kind: 'linear',
-      value: 'linear-gradient(135deg,#fde047 0%,#f472b6 50%,#22d3ee 100%)'
-    },
+    keywords: ['memphis', '80s', 'geometric', 'shapes'],
+    background: { kind: 'solid', value: '#fef3c7' },
     caption: {
-      text: 'Funky Fresh · {date}',
-      font: "900 22px 'Space Grotesk', sans-serif",
+      text: '⟲ FUNKY FRESH ⟳ {date}',
+      font: "900 20px 'Space Grotesk', sans-serif",
       color: '#0f172a'
     },
-    decorations: [
-      emoji('🎨', 0.05, 0.04, 0.11, 'foreground', -10, 1),
-      emoji('📺', 0.88, 0.08, 0.1, 'foreground', 5, 1),
-      emoji('📻', 0.05, 0.88, 0.1, 'foreground', -10, 1),
-      emoji('🎯', 0.88, 0.88, 0.1, 'foreground', 0, 1)
-    ],
-    slotBorder: { color: '#0f172a', width: 4, radius: 0.03 }
+    decorations: [],
+    slotBorder: { color: '#0f172a', width: 4, radius: 0 },
+    layouts: {
+      strip: {
+        aspect: 0.52,
+        background: { kind: 'solid', value: '#fef3c7' },
+        slots: [
+          { x: 0.08, y: 0.13, w: 0.84, h: 0.18, radius: 0, border: { color: '#0f172a', width: 4 }, rotation: -2 },
+          { x: 0.08, y: 0.33, w: 0.84, h: 0.18, radius: 0, border: { color: '#0f172a', width: 4 }, rotation: 2 },
+          { x: 0.08, y: 0.53, w: 0.84, h: 0.18, radius: 0, border: { color: '#0f172a', width: 4 }, rotation: -2 },
+          { x: 0.08, y: 0.73, w: 0.84, h: 0.18, radius: 0, border: { color: '#0f172a', width: 4 }, rotation: 2 }
+        ],
+        decorations: [
+          // Geometric shapes scatter background.
+          rect(0.06, 0.08, 0.08, 0.04, '#f472b6', { placement: 'background', rotation: 25 }),
+          rect(0.94, 0.2, 0.05, 0.05, '#22d3ee', { placement: 'background', radius: 0.5 }),
+          rect(0.04, 0.32, 0.04, 0.03, '#0f172a', { placement: 'background' }),
+          rect(0.96, 0.44, 0.06, 0.03, '#f472b6', { placement: 'background', rotation: 45 }),
+          rect(0.05, 0.56, 0.05, 0.03, '#22d3ee', { placement: 'background' }),
+          rect(0.94, 0.68, 0.05, 0.05, '#fde047', {
+            placement: 'background',
+            radius: 0.5,
+            stroke: { color: '#0f172a', width: 2 }
+          }),
+          rect(0.06, 0.82, 0.06, 0.04, '#0f172a', { placement: 'background', rotation: -20 }),
+          emoji('⌇', 0.5, 0.22, 0.05, 'background', 0, 1, '#22d3ee'),
+          emoji('⌇', 0.5, 0.52, 0.05, 'background', 0, 1, '#f472b6'),
+          emoji('●', 0.05, 0.5, 0.02, 'foreground', 0, 1, '#ef4444'),
+          emoji('●', 0.95, 0.5, 0.02, 'foreground', 0, 1, '#22c55e'),
+          emoji('▲', 0.08, 0.06, 0.04, 'foreground', 0, 1, '#ef4444'),
+          emoji('●', 0.5, 0.06, 0.035, 'foreground', 0, 1, '#22d3ee'),
+          emoji('▲', 0.92, 0.06, 0.04, 'foreground', 0, 1, '#f472b6')
+        ]
+      }
+    }
   },
   {
     id: 'grunge',
@@ -839,23 +1115,46 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'bollywood',
     label: 'Bollywood',
-    tagline: 'Magenta + gold jewels.',
+    tagline: 'Mandala gold + jewel borders.',
     preview: 'linear-gradient(135deg,#a21caf,#facc15)',
     tags: ['bold', 'fandom'],
-    keywords: ['bollywood', 'india', 'magenta', 'gold'],
-    background: { kind: 'linear', value: 'linear-gradient(135deg,#a21caf 0%,#facc15 100%)' },
+    keywords: ['bollywood', 'india', 'magenta', 'gold', 'mandala', 'henna'],
+    background: { kind: 'linear', value: 'linear-gradient(135deg,#7c1d6f 0%,#db2777 60%,#facc15 100%)' },
     caption: {
-      text: 'Jhoom · {date}',
-      font: "900 22px 'Space Grotesk', sans-serif",
+      text: '❋ JHOOM ❋ {date}',
+      font: "900 22px 'Playfair Display', serif",
       color: '#fff7ed'
     },
-    decorations: [
-      emoji('💃', 0.05, 0.04, 0.12, 'foreground', -10, 1),
-      emoji('👑', 0.88, 0.08, 0.1, 'foreground', 0, 1),
-      emoji('🪔', 0.05, 0.88, 0.1, 'foreground', 0, 1),
-      emoji('💎', 0.88, 0.88, 0.09, 'foreground', 0, 1)
-    ],
-    slotBorder: { color: '#fff7ed', width: 3, radius: 0.05 }
+    decorations: [],
+    slotBorder: { color: '#facc15', width: 5, radius: 0.25 },
+    layouts: {
+      strip: {
+        aspect: 0.58,
+        slots: [
+          { x: 0.1, y: 0.12, w: 0.8, h: 0.19, radius: 0.2, border: { color: '#facc15', width: 5 } },
+          { x: 0.1, y: 0.33, w: 0.8, h: 0.19, radius: 0.2, border: { color: '#facc15', width: 5 } },
+          { x: 0.1, y: 0.54, w: 0.8, h: 0.19, radius: 0.2, border: { color: '#facc15', width: 5 } },
+          { x: 0.1, y: 0.75, w: 0.8, h: 0.19, radius: 0.2, border: { color: '#facc15', width: 5 } }
+        ],
+        decorations: [
+          // Mandala pattern jewels di border slot.
+          emoji('❋', 0.05, 0.215, 0.04, 'foreground', 0, 1, '#facc15'),
+          emoji('❋', 0.95, 0.215, 0.04, 'foreground', 0, 1, '#facc15'),
+          emoji('❋', 0.05, 0.425, 0.04, 'foreground', 0, 1, '#facc15'),
+          emoji('❋', 0.95, 0.425, 0.04, 'foreground', 0, 1, '#facc15'),
+          emoji('❋', 0.05, 0.635, 0.04, 'foreground', 0, 1, '#facc15'),
+          emoji('❋', 0.95, 0.635, 0.04, 'foreground', 0, 1, '#facc15'),
+          emoji('❋', 0.05, 0.845, 0.04, 'foreground', 0, 1, '#facc15'),
+          emoji('❋', 0.95, 0.845, 0.04, 'foreground', 0, 1, '#facc15'),
+          emoji('💃', 0.1, 0.05, 0.06, 'foreground', -5, 1),
+          emoji('👑', 0.5, 0.05, 0.06, 'foreground', 0, 1),
+          emoji('🕉️', 0.9, 0.05, 0.055, 'foreground', 5, 1),
+          emoji('🪔', 0.1, 0.96, 0.055, 'foreground', 0, 1),
+          emoji('💎', 0.5, 0.96, 0.045, 'foreground', 0, 1),
+          emoji('🪔', 0.9, 0.96, 0.055, 'foreground', 0, 1)
+        ]
+      }
+    }
   },
   {
     id: 'tropical',
@@ -986,49 +1285,133 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'pride',
     label: 'Pride',
-    tagline: 'Rainbow love flag.',
+    tagline: 'Rainbow stripes behind photos.',
     preview:
       'linear-gradient(180deg,#ef4444 0 16%,#f97316 16% 32%,#eab308 32% 48%,#22c55e 48% 64%,#3b82f6 64% 82%,#a855f7 82% 100%)',
     tags: ['pride', 'bold'],
     keywords: ['pride', 'lgbtq', 'rainbow', 'love'],
-    background: {
-      kind: 'linear',
-      value:
-        'linear-gradient(180deg,#ef4444 0%,#ef4444 16%,#f97316 16%,#f97316 32%,#eab308 32%,#eab308 48%,#22c55e 48%,#22c55e 64%,#3b82f6 64%,#3b82f6 82%,#a855f7 82%,#a855f7 100%)'
-    },
+    background: { kind: 'solid', value: '#111827' },
     caption: {
-      text: 'Love is Love · {date}',
-      font: "900 22px 'Space Grotesk', sans-serif",
-      color: '#ffffff'
+      text: '♥ LOVE IS LOVE · {date}',
+      font: "900 18px 'Space Grotesk', sans-serif",
+      color: '#fff'
     },
-    decorations: [
-      emoji('🏳️‍🌈', 0.05, 0.04, 0.14, 'foreground', -10, 1),
-      emoji('❤️', 0.88, 0.06, 0.08, 'foreground', 0, 1),
-      emoji('🌈', 0.05, 0.9, 0.12, 'foreground', 0, 1),
-      emoji('✨', 0.9, 0.9, 0.07, 'foreground', 0, 1)
-    ],
-    slotBorder: { color: '#ffffff', width: 3, radius: 0.05 }
+    decorations: [],
+    slotBorder: { color: '#fff', width: 4, radius: 0.06 },
+    layouts: {
+      strip: {
+        aspect: 0.5,
+        background: { kind: 'solid', value: '#111827' },
+        slots: [
+          { x: 0.14, y: 0.12, w: 0.72, h: 0.17, radius: 0.06, border: { color: '#fff', width: 4 } },
+          { x: 0.14, y: 0.32, w: 0.72, h: 0.17, radius: 0.06, border: { color: '#fff', width: 4 } },
+          { x: 0.14, y: 0.52, w: 0.72, h: 0.17, radius: 0.06, border: { color: '#fff', width: 4 } },
+          { x: 0.14, y: 0.72, w: 0.72, h: 0.17, radius: 0.06, border: { color: '#fff', width: 4 } }
+        ],
+        decorations: [
+          // Rainbow stripes as background decorations.
+          rect(0.5, 0.035, 1, 0.07, '#ef4444', { placement: 'background' }),
+          rect(0.5, 0.105, 1, 0.07, '#f97316', { placement: 'background' }),
+          rect(0.06, 0.5, 0.06, 0.85, '#eab308', { placement: 'background' }),
+          rect(0.94, 0.5, 0.06, 0.85, '#22c55e', { placement: 'background' }),
+          rect(0.5, 0.89, 1, 0.07, '#3b82f6', { placement: 'background' }),
+          rect(0.5, 0.955, 1, 0.07, '#a855f7', { placement: 'background' }),
+          emoji('🏳️‍🌈', 0.08, 0.06, 0.05, 'foreground', 0, 1),
+          emoji('🏳️‍🌈', 0.92, 0.06, 0.05, 'foreground', 0, 1),
+          emoji('♥', 0.5, 0.1, 0.04, 'foreground', 0, 1, '#fff')
+        ],
+        header: {
+          text: '✦ PROUD AS F ✦',
+          font: "900 22px 'Space Grotesk', sans-serif",
+          color: '#fff',
+          y: 0.075
+        }
+      }
+    }
   },
   {
     id: 'polaroid',
     label: 'Polaroid Pack',
-    tagline: 'Cream white + instant film.',
-    preview: 'linear-gradient(135deg,#f5f5f4,#d6d3d1)',
+    tagline: 'Scattered instant photos + tape.',
+    preview: 'linear-gradient(135deg,#e7e5e4,#d6d3d1)',
     tags: ['retro', 'minimalist'],
-    keywords: ['polaroid', 'instant', 'film'],
-    background: { kind: 'solid', value: '#f7f3ea' },
+    keywords: ['polaroid', 'instant', 'film', 'scattered'],
+    background: { kind: 'linear', value: 'linear-gradient(180deg,#a8a29e 0%,#78716c 100%)' },
     caption: {
       text: 'Moments · {date}',
       font: "italic 600 20px Georgia, serif",
-      color: '#44403c'
+      color: '#292524'
     },
-    decorations: [
-      emoji('📸', 0.05, 0.04, 0.1, 'foreground', -10, 1),
-      emoji('🎞️', 0.88, 0.08, 0.1, 'foreground', 10, 1),
-      emoji('✉️', 0.05, 0.88, 0.09, 'foreground', 0, 1),
-      emoji('📝', 0.88, 0.88, 0.09, 'foreground', -10, 1)
-    ],
-    slotBorder: { color: '#44403c', width: 2, radius: 0.02 }
+    decorations: [],
+    slotBorder: { color: '#fafaf9', width: 0, radius: 0.01 },
+    layouts: {
+      strip: {
+        aspect: 0.62,
+        // 4 polaroid miring, tiap slot punya "frame" putih via perSlotDecorations.
+        slots: [
+          {
+            x: 0.12, y: 0.05, w: 0.62, h: 0.2, rotation: -6, radius: 0.02,
+            border: { color: '#1f1e1c', width: 2 },
+            perSlotDecorations: [
+              // Kartu putih di belakang slot (card besar sedikit lebih besar).
+              rect(0.5, 0.52, 1.12, 1.3, '#fafaf9', {
+                placement: 'background',
+                radius: 0.015,
+                stroke: { color: '#d6d3d1', width: 1 }
+              }),
+              // Washi tape di atas.
+              rect(0.35, -0.04, 0.4, 0.08, '#fbbf24', { placement: 'foreground', opacity: 0.85, rotation: -8 })
+            ]
+          },
+          {
+            x: 0.3, y: 0.27, w: 0.62, h: 0.2, rotation: 4, radius: 0.02,
+            border: { color: '#1f1e1c', width: 2 },
+            perSlotDecorations: [
+              rect(0.5, 0.52, 1.12, 1.3, '#fafaf9', {
+                placement: 'background',
+                radius: 0.015,
+                stroke: { color: '#d6d3d1', width: 1 }
+              }),
+              rect(0.65, -0.04, 0.45, 0.08, '#06b6d4', { placement: 'foreground', opacity: 0.82, rotation: 10 })
+            ]
+          },
+          {
+            x: 0.08, y: 0.49, w: 0.62, h: 0.2, rotation: -3, radius: 0.02,
+            border: { color: '#1f1e1c', width: 2 },
+            perSlotDecorations: [
+              rect(0.5, 0.52, 1.12, 1.3, '#fafaf9', {
+                placement: 'background',
+                radius: 0.015,
+                stroke: { color: '#d6d3d1', width: 1 }
+              }),
+              rect(0.3, -0.04, 0.5, 0.09, '#f472b6', { placement: 'foreground', opacity: 0.85, rotation: -12 })
+            ]
+          },
+          {
+            x: 0.3, y: 0.71, w: 0.62, h: 0.2, rotation: 7, radius: 0.02,
+            border: { color: '#1f1e1c', width: 2 },
+            perSlotDecorations: [
+              rect(0.5, 0.52, 1.12, 1.3, '#fafaf9', {
+                placement: 'background',
+                radius: 0.015,
+                stroke: { color: '#d6d3d1', width: 1 }
+              }),
+              rect(0.7, -0.04, 0.4, 0.08, '#a3e635', { placement: 'foreground', opacity: 0.85, rotation: 15 })
+            ]
+          }
+        ],
+        decorations: [
+          emoji('📎', 0.06, 0.93, 0.06, 'foreground', -25, 0.9),
+          emoji('✉️', 0.9, 0.94, 0.06, 'foreground', 15, 0.9)
+        ],
+        footer: {
+          text: '· Polaroid · {date} ·',
+          font: "italic 600 22px Georgia, serif",
+          color: '#fafaf9',
+          y: 0.975
+        }
+      }
+    }
   },
   {
     id: 'risograph',
@@ -1075,44 +1458,94 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'vhs',
     label: 'VHS 90s',
-    tagline: 'CRT teal + rewind.',
-    preview: 'linear-gradient(135deg,#134e4a,#06b6d4)',
+    tagline: 'CRT scanlines + REC badge.',
+    preview: 'linear-gradient(135deg,#000,#06b6d4)',
     tags: ['retro'],
-    keywords: ['vhs', '90s', 'tape', 'crt'],
-    background: { kind: 'linear', value: 'linear-gradient(180deg,#134e4a 0%,#06b6d4 100%)' },
+    keywords: ['vhs', '90s', 'tape', 'crt', 'rec', 'tracking'],
+    background: { kind: 'linear', value: 'linear-gradient(180deg,#000 0%,#134e4a 100%)' },
     caption: {
-      text: 'REC · {date}',
-      font: "900 22px monospace",
-      color: '#fefce8'
+      text: 'SP · {date} · 01:23:45',
+      font: "900 18px monospace",
+      color: '#39ff14'
     },
-    decorations: [
-      emoji('📼', 0.05, 0.04, 0.12, 'foreground', 0, 1),
-      emoji('📺', 0.88, 0.08, 0.12, 'foreground', 0, 1),
-      emoji('🕹️', 0.05, 0.88, 0.1, 'foreground', 0, 1),
-      emoji('⏯️', 0.88, 0.88, 0.09, 'foreground', 0, 1)
-    ],
-    slotBorder: { color: '#fefce8', width: 3, radius: 0.02 }
+    decorations: [],
+    slotBorder: { color: '#39ff14', width: 3, radius: 0 },
+    layouts: {
+      strip: {
+        aspect: 0.55,
+        background: { kind: 'solid', value: '#040404' },
+        // 4 slot berjarak rapat seperti tracking preview di VCR.
+        slots: [
+          { x: 0.08, y: 0.1, w: 0.84, h: 0.19, radius: 0, border: { color: '#39ff14', width: 3 } },
+          { x: 0.08, y: 0.305, w: 0.84, h: 0.19, radius: 0, border: { color: '#39ff14', width: 3 } },
+          { x: 0.08, y: 0.51, w: 0.84, h: 0.19, radius: 0, border: { color: '#39ff14', width: 3 } },
+          { x: 0.08, y: 0.715, w: 0.84, h: 0.19, radius: 0, border: { color: '#39ff14', width: 3 } }
+        ],
+        decorations: [
+          // Scanline horizontal atas (faint).
+          rect(0.5, 0.03, 1, 0.002, '#39ff14', { placement: 'foreground', opacity: 0.4 }),
+          rect(0.5, 0.97, 1, 0.002, '#39ff14', { placement: 'foreground', opacity: 0.4 }),
+          // REC circle di pojok atas.
+          rect(0.1, 0.045, 0.02, 0.012, '#ef4444', {
+            placement: 'foreground',
+            radius: 0.5
+          }),
+          emoji('REC', 0.15, 0.045, 0.022, 'foreground', 0, 1, '#ef4444'),
+          emoji('▶ PLAY', 0.85, 0.045, 0.022, 'foreground', 0, 1, '#39ff14'),
+          emoji('📼', 0.1, 0.95, 0.035, 'foreground', 0, 0.9)
+        ],
+        header: {
+          text: 'CH 03 · VHS HOME VIDEO',
+          font: "900 18px monospace",
+          color: '#39ff14',
+          y: 0.076
+        }
+      }
+    }
   },
   {
     id: 'cafe',
     label: 'Coffee Cafe',
-    tagline: 'Brown espresso + pastries.',
-    preview: 'linear-gradient(135deg,#78350f,#fde68a)',
+    tagline: 'Menu board + receipt ticket.',
+    preview: 'linear-gradient(135deg,#3c1a09,#d6a46e)',
     tags: ['food', 'aesthetic'],
-    keywords: ['coffee', 'cafe', 'pastry', 'bakery'],
-    background: { kind: 'linear', value: 'linear-gradient(180deg,#78350f 0%,#fcd34d 100%)' },
+    keywords: ['coffee', 'cafe', 'pastry', 'bakery', 'kopi'],
+    background: { kind: 'solid', value: '#1f120a' },
     caption: {
-      text: 'Latte Art · {date}',
-      font: "italic 700 22px Georgia, serif",
-      color: '#fffbeb'
+      text: '· LATTE ART · {date} ·',
+      font: "italic 700 18px Georgia, serif",
+      color: '#fbe9c8'
     },
-    decorations: [
-      emoji('☕', 0.05, 0.04, 0.12, 'foreground', -5, 1),
-      emoji('🧁', 0.88, 0.08, 0.1, 'foreground', 10, 1),
-      emoji('🥐', 0.05, 0.88, 0.11, 'foreground', 0, 1),
-      emoji('📖', 0.88, 0.88, 0.09, 'foreground', -10, 1)
-    ],
-    slotBorder: { color: '#fffbeb', width: 2, radius: 0.04 }
+    decorations: [],
+    slotBorder: { color: '#fbe9c8', width: 2, radius: 0.02 },
+    layouts: {
+      strip: {
+        aspect: 0.55,
+        background: { kind: 'solid', value: '#1f120a' },
+        slots: [
+          { x: 0.08, y: 0.14, w: 0.84, h: 0.18, radius: 0.02, border: { color: '#fbe9c8', width: 2 } },
+          { x: 0.08, y: 0.34, w: 0.84, h: 0.18, radius: 0.02, border: { color: '#fbe9c8', width: 2 } },
+          { x: 0.08, y: 0.54, w: 0.84, h: 0.18, radius: 0.02, border: { color: '#fbe9c8', width: 2 } },
+          { x: 0.08, y: 0.74, w: 0.84, h: 0.18, radius: 0.02, border: { color: '#fbe9c8', width: 2 } }
+        ],
+        decorations: [
+          // Menu board style: garis "menu item" di bawah.
+          rect(0.5, 0.95, 0.84, 0.001, '#fbe9c8', { placement: 'foreground', opacity: 0.7 }),
+          emoji('· ESPRESSO · LATTE · MOCHA ·', 0.5, 0.97, 0.022, 'foreground', 0, 0.9, '#d6a46e'),
+          // Perforated edge top (receipt).
+          emoji('· · · · · · · · · · · · · · ·', 0.5, 0.105, 0.018, 'foreground', 0, 0.6, '#fbe9c8'),
+          emoji('☕', 0.05, 0.055, 0.06, 'foreground', -8, 1),
+          emoji('🥐', 0.95, 0.055, 0.055, 'foreground', 10, 1),
+          emoji('❤', 0.5, 0.06, 0.03, 'foreground', 0, 1, '#ef4444')
+        ],
+        header: {
+          text: '— CAFÉ PHOTOGRAFE —',
+          font: "900 18px 'Playfair Display', Georgia, serif",
+          color: '#fbe9c8',
+          y: 0.025
+        }
+      }
+    }
   },
   {
     id: 'sushi',
@@ -1204,23 +1637,49 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'k-idol',
     label: 'K-Idol',
-    tagline: 'Purple + photocard heart.',
+    tagline: 'Hero photocard + 3 B-sides.',
     preview: 'linear-gradient(135deg,#a855f7,#ec4899)',
     tags: ['fandom', 'cute'],
-    keywords: ['kpop', 'idol', 'photocard', 'bias'],
-    background: { kind: 'linear', value: 'linear-gradient(135deg,#a855f7 0%,#ec4899 100%)' },
+    keywords: ['kpop', 'idol', 'photocard', 'bias', 'seventeen', 'newjeans', 'pc'],
+    background: { kind: 'linear', value: 'linear-gradient(160deg,#5b21b6 0%,#ec4899 60%,#f59e0b 100%)' },
     caption: {
-      text: 'Bias Wrecker · {date}',
-      font: "900 22px 'Space Grotesk', sans-serif",
-      color: '#ffffff'
+      text: '♡ BIAS WRECKER ♡ · {date}',
+      font: "900 18px 'Space Grotesk', sans-serif",
+      color: '#fff'
     },
-    decorations: [
-      emoji('💜', 0.05, 0.04, 0.1, 'foreground', 0, 1),
-      emoji('🎤', 0.88, 0.08, 0.11, 'foreground', 0, 1),
-      emoji('🎧', 0.05, 0.88, 0.1, 'foreground', 0, 1),
-      emoji('⭐', 0.88, 0.88, 0.09, 'foreground', 0, 1)
-    ],
-    slotBorder: { color: '#ffffff', width: 3, radius: 0.07 }
+    decorations: [],
+    slotBorder: { color: '#fff', width: 3, radius: 0.06 },
+    layouts: {
+      strip: {
+        aspect: 0.58,
+        slots: [
+          // Hero besar atas (photocard A).
+          {
+            x: 0.12, y: 0.12, w: 0.76, h: 0.44, radius: 0.06,
+            border: { color: '#fff', width: 4 },
+            perSlotDecorations: [
+              emoji('♡', 0.9, 0.08, 0.06, 'foreground', 0, 1, '#fff'),
+              emoji('01', 0.1, 0.08, 0.045, 'foreground', 0, 1, '#fff')
+            ]
+          },
+          // 3 thumbnail kecil di bawah.
+          { x: 0.04, y: 0.6, w: 0.285, h: 0.28, radius: 0.05, border: { color: '#fff', width: 2 } },
+          { x: 0.355, y: 0.6, w: 0.285, h: 0.28, radius: 0.05, border: { color: '#fff', width: 2 } },
+          { x: 0.675, y: 0.6, w: 0.285, h: 0.28, radius: 0.05, border: { color: '#fff', width: 2 } }
+        ],
+        decorations: [
+          emoji('⭐', 0.06, 0.04, 0.05, 'foreground', 0, 1),
+          emoji('💜', 0.93, 0.04, 0.05, 'foreground', 0, 1),
+          emoji('♬', 0.5, 0.58, 0.035, 'foreground', 0, 0.9, '#fff')
+        ],
+        header: {
+          text: '★ FAN MEETING · 2026 ★',
+          font: "900 20px 'Space Grotesk', sans-serif",
+          color: '#fff',
+          y: 0.055
+        }
+      }
+    }
   },
   {
     id: 'ballet',
@@ -1351,23 +1810,52 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'ramadan',
     label: 'Ramadan',
-    tagline: 'Crescent moon + lantern.',
+    tagline: 'Hanging lanterns + arch frame.',
     preview: 'linear-gradient(135deg,#064e3b,#facc15)',
     tags: ['seasonal'],
-    keywords: ['ramadan', 'eid', 'lantern', 'muslim'],
-    background: { kind: 'linear', value: 'linear-gradient(180deg,#064e3b 0%,#1e3a8a 100%)' },
+    keywords: ['ramadan', 'eid', 'lantern', 'muslim', 'lebaran'],
+    background: { kind: 'linear', value: 'linear-gradient(180deg,#052e2b 0%,#1e3a8a 100%)' },
     caption: {
-      text: 'Ramadan Kareem · {date}',
-      font: "italic 700 22px Georgia, serif",
+      text: '☪ Ramadan Kareem · {date}',
+      font: "italic 700 20px Georgia, serif",
       color: '#facc15'
     },
-    decorations: [
-      emoji('🌙', 0.05, 0.04, 0.12, 'foreground', -10, 1),
-      emoji('🕌', 0.88, 0.08, 0.12, 'foreground', 0, 1),
-      emoji('🪔', 0.05, 0.88, 0.11, 'foreground', 0, 1),
-      emoji('⭐', 0.88, 0.88, 0.09, 'foreground', 0, 1)
-    ],
-    slotBorder: { color: '#facc15', width: 2, radius: 0.05 }
+    decorations: [],
+    slotBorder: { color: '#facc15', width: 2, radius: 0.5 },
+    layouts: {
+      strip: {
+        aspect: 0.48,
+        slots: [
+          // Slot dengan radius besar meniru arch/dome.
+          { x: 0.12, y: 0.14, w: 0.76, h: 0.17, radius: 0.5, border: { color: '#facc15', width: 3 } },
+          { x: 0.12, y: 0.335, w: 0.76, h: 0.17, radius: 0.5, border: { color: '#facc15', width: 3 } },
+          { x: 0.12, y: 0.53, w: 0.76, h: 0.17, radius: 0.5, border: { color: '#facc15', width: 3 } },
+          { x: 0.12, y: 0.725, w: 0.76, h: 0.17, radius: 0.5, border: { color: '#facc15', width: 3 } }
+        ],
+        decorations: [
+          // Lantern hanging kiri-kanan bergantian.
+          rect(0.06, 0, 0.002, 0.12, '#facc15', { placement: 'foreground', opacity: 0.6 }),
+          emoji('🪔', 0.06, 0.13, 0.055, 'foreground', 0, 1),
+          rect(0.94, 0, 0.002, 0.09, '#facc15', { placement: 'foreground', opacity: 0.6 }),
+          emoji('🪔', 0.94, 0.1, 0.05, 'foreground', 0, 1),
+          rect(0.06, 0, 0.002, 0.3, '#facc15', { placement: 'foreground', opacity: 0.6 }),
+          emoji('🪔', 0.06, 0.32, 0.045, 'foreground', 0, 1),
+          rect(0.94, 0, 0.002, 0.32, '#facc15', { placement: 'foreground', opacity: 0.6 }),
+          emoji('🪔', 0.94, 0.33, 0.05, 'foreground', 0, 1),
+          emoji('🌙', 0.1, 0.055, 0.055, 'foreground', -15, 1),
+          emoji('⭐', 0.22, 0.03, 0.025, 'foreground', 0, 1, '#facc15'),
+          emoji('⭐', 0.78, 0.04, 0.03, 'foreground', 0, 1, '#facc15'),
+          emoji('🕌', 0.9, 0.055, 0.055, 'foreground', 0, 1),
+          emoji('⭐', 0.5, 0.03, 0.02, 'foreground', 0, 1, '#facc15')
+        ],
+        header: {
+          text: '۞ رمضان كريم ۞',
+          font: "900 22px 'Amiri', Georgia, serif",
+          color: '#facc15',
+          y: 0.082
+        }
+      }
+    }
   },
   {
     id: 'lunar',
@@ -1393,23 +1881,56 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'newspaper',
     label: 'Newspaper',
-    tagline: 'Black & white vintage press.',
-    preview: 'linear-gradient(135deg,#fafafa,#e5e5e5)',
+    tagline: 'Big headline + column grid.',
+    preview: 'linear-gradient(135deg,#fafaf9,#e5e5e5)',
     tags: ['retro', 'minimalist'],
-    keywords: ['newspaper', 'news', 'press', 'vintage'],
+    keywords: ['newspaper', 'news', 'press', 'vintage', 'tabloid'],
     background: { kind: 'solid', value: '#f5f5f4' },
     caption: {
-      text: 'THE DAILY PRESS · {date}',
-      font: "900 22px Georgia, serif",
+      text: 'PRINTED TODAY · {date}',
+      font: "900 20px Georgia, serif",
       color: '#111'
     },
-    decorations: [
-      emoji('📰', 0.05, 0.04, 0.11, 'foreground', -5, 1, '#111'),
-      emoji('✒️', 0.88, 0.08, 0.09, 'foreground', -15, 1, '#111'),
-      emoji('📎', 0.05, 0.88, 0.08, 'foreground', 0, 1, '#111'),
-      emoji('☕', 0.88, 0.88, 0.09, 'foreground', 0, 1, '#111')
-    ],
-    slotBorder: { color: '#111', width: 3, radius: 0.01 }
+    decorations: [],
+    slotBorder: { color: '#111', width: 2, radius: 0 },
+    layouts: {
+      strip: {
+        aspect: 0.5,
+        background: { kind: 'solid', value: '#f7f5ef' },
+        // Masthead area atas, slot besar + 3 kolom bawah.
+        slots: [
+          // Hero (besar atas).
+          { x: 0.05, y: 0.1, w: 0.9, h: 0.38, radius: 0, border: { color: '#111', width: 3 } },
+          // Kolom kiri, tengah, kanan.
+          { x: 0.05, y: 0.52, w: 0.29, h: 0.34, radius: 0, border: { color: '#111', width: 2 } },
+          { x: 0.355, y: 0.52, w: 0.29, h: 0.34, radius: 0, border: { color: '#111', width: 2 } },
+          { x: 0.66, y: 0.52, w: 0.29, h: 0.34, radius: 0, border: { color: '#111', width: 2 } }
+        ],
+        decorations: [
+          // Double rule (masthead separator).
+          rect(0.5, 0.075, 0.9, 0.003, '#111', { placement: 'foreground' }),
+          rect(0.5, 0.088, 0.9, 0.001, '#111', { placement: 'foreground' }),
+          // Ornament kecil di bawah masthead.
+          emoji('⚜️', 0.5, 0.065, 0.018, 'foreground', 0, 0.8, '#111'),
+          // Caption kecil di setiap kolom (imitasi dateline).
+          emoji('•', 0.195, 0.885, 0.015, 'foreground', 0, 1, '#111'),
+          emoji('•', 0.5, 0.885, 0.015, 'foreground', 0, 1, '#111'),
+          emoji('•', 0.805, 0.885, 0.015, 'foreground', 0, 1, '#111')
+        ],
+        header: {
+          text: 'THE DAILY TIMES',
+          font: "900 56px 'Playfair Display', Georgia, serif",
+          color: '#111',
+          y: 0.045
+        },
+        footer: {
+          text: 'Vol.1 · No.1 · {date} · Price 5¢',
+          font: "italic 600 16px Georgia, serif",
+          color: '#111',
+          y: 0.94
+        }
+      }
+    }
   },
   {
     id: 'watercolor',
@@ -1483,23 +2004,51 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'pixel-game',
     label: 'Pixel Game',
-    tagline: '8-bit coin + sprite.',
-    preview: 'linear-gradient(135deg,#0f172a,#22c55e)',
+    tagline: 'Arcade screen + HUD score.',
+    preview: 'linear-gradient(135deg,#0f172a,#a855f7)',
     tags: ['retro', 'bold'],
-    keywords: ['pixel', '8bit', 'game', 'arcade'],
-    background: { kind: 'linear', value: 'linear-gradient(180deg,#0f172a 0%,#22c55e 100%)' },
+    keywords: ['pixel', '8bit', 'game', 'arcade', 'chiptune'],
+    background: { kind: 'solid', value: '#0a0214' },
     caption: {
-      text: 'PRESS START · {date}',
-      font: "900 22px monospace",
-      color: '#fff'
+      text: '© 1986 · {date}',
+      font: "900 18px monospace",
+      color: '#22d3ee'
     },
-    decorations: [
-      emoji('🎮', 0.05, 0.04, 0.12, 'foreground', 0, 1),
-      emoji('🕹️', 0.88, 0.08, 0.11, 'foreground', 0, 1),
-      emoji('👾', 0.05, 0.88, 0.11, 'foreground', 0, 1),
-      emoji('🏆', 0.88, 0.88, 0.1, 'foreground', 0, 1)
-    ],
-    slotBorder: { color: '#fff', width: 3, radius: 0.02 }
+    decorations: [],
+    slotBorder: { color: '#fbbf24', width: 0, radius: 0 },
+    layouts: {
+      strip: {
+        aspect: 0.55,
+        background: { kind: 'solid', value: '#0a0214' },
+        slots: [
+          { x: 0.08, y: 0.18, w: 0.84, h: 0.16, radius: 0, border: { color: '#fbbf24', width: 4 } },
+          { x: 0.08, y: 0.36, w: 0.84, h: 0.16, radius: 0, border: { color: '#22d3ee', width: 4 } },
+          { x: 0.08, y: 0.54, w: 0.84, h: 0.16, radius: 0, border: { color: '#f472b6', width: 4 } },
+          { x: 0.08, y: 0.72, w: 0.84, h: 0.16, radius: 0, border: { color: '#a3e635', width: 4 } }
+        ],
+        decorations: [
+          // HUD score bar atas.
+          rect(0.5, 0.12, 0.84, 0.035, '#1e1b4b', {
+            placement: 'background',
+            stroke: { color: '#fbbf24', width: 2 }
+          }),
+          emoji('1P', 0.14, 0.12, 0.025, 'foreground', 0, 1, '#fbbf24'),
+          emoji('SCORE 999900', 0.38, 0.12, 0.025, 'foreground', 0, 1, '#fff'),
+          emoji('♥♥♥', 0.68, 0.12, 0.025, 'foreground', 0, 1, '#ef4444'),
+          emoji('⏱ 00:59', 0.85, 0.12, 0.025, 'foreground', 0, 1, '#22d3ee'),
+          // Sprite invader kiri-kanan bawah.
+          emoji('👾', 0.1, 0.935, 0.05, 'foreground', 0, 1),
+          emoji('👾', 0.9, 0.935, 0.05, 'foreground', 0, 1),
+          emoji('🪙', 0.92, 0.065, 0.04, 'foreground', 0, 1)
+        ],
+        header: {
+          text: '★ HIGH SCORE PHOTOBOOTH ★',
+          font: "900 18px monospace",
+          color: '#fbbf24',
+          y: 0.055
+        }
+      }
+    }
   },
   {
     id: 'minimal-mono',
@@ -1568,23 +2117,42 @@ export const STRIP_THEMES: readonly StripTheme[] = [
   {
     id: 'zen-garden',
     label: 'Zen Garden',
-    tagline: 'Sand ripple + bamboo.',
-    preview: 'linear-gradient(135deg,#f5f5f4,#a7c5a0)',
+    tagline: 'Minimal ink calligraphy.',
+    preview: 'linear-gradient(135deg,#fafaf9,#9ca3af)',
     tags: ['minimalist', 'nature'],
-    keywords: ['zen', 'japan', 'garden', 'bamboo', 'sand'],
-    background: { kind: 'linear', value: 'linear-gradient(180deg,#fafaf9 0%,#a7c5a0 100%)' },
+    keywords: ['zen', 'japan', 'garden', 'bamboo', 'sand', 'ink', 'calligraphy'],
+    background: { kind: 'solid', value: '#f8f5ed' },
     caption: {
-      text: 'Mindful · {date}',
-      font: "italic 600 22px Georgia, serif",
-      color: '#365314'
+      text: '— 静 —  {date}',
+      font: "italic 300 22px Georgia, serif",
+      color: '#1a1a1a'
     },
-    decorations: [
-      emoji('🎋', 0.05, 0.04, 0.12, 'foreground', 0, 1),
-      emoji('🍵', 0.88, 0.08, 0.1, 'foreground', 0, 1),
-      emoji('🪨', 0.05, 0.88, 0.1, 'foreground', 0, 1),
-      emoji('🐟', 0.88, 0.88, 0.1, 'foreground', -10, 1)
-    ],
-    slotBorder: { color: '#365314', width: 2, radius: 0.04 }
+    decorations: [],
+    slotBorder: { color: '#1a1a1a', width: 1, radius: 0 },
+    layouts: {
+      strip: {
+        aspect: 0.48,
+        background: { kind: 'solid', value: '#f8f5ed' },
+        // Slot kecil di sisi kanan, ruang negatif besar di kiri (wabi-sabi).
+        slots: [
+          { x: 0.45, y: 0.08, w: 0.5, h: 0.2, radius: 0, border: { color: '#1a1a1a', width: 1 } },
+          { x: 0.45, y: 0.3, w: 0.5, h: 0.2, radius: 0, border: { color: '#1a1a1a', width: 1 } },
+          { x: 0.45, y: 0.52, w: 0.5, h: 0.2, radius: 0, border: { color: '#1a1a1a', width: 1 } },
+          { x: 0.45, y: 0.74, w: 0.5, h: 0.2, radius: 0, border: { color: '#1a1a1a', width: 1 } }
+        ],
+        decorations: [
+          // Kaligrafi kanji besar kiri.
+          emoji('静', 0.2, 0.2, 0.18, 'foreground', 0, 1, '#1a1a1a'),
+          emoji('寂', 0.2, 0.45, 0.18, 'foreground', 0, 1, '#1a1a1a'),
+          emoji('空', 0.2, 0.7, 0.18, 'foreground', 0, 1, '#1a1a1a'),
+          // Enso ring kecil di bawah.
+          emoji('◯', 0.2, 0.88, 0.12, 'foreground', 0, 0.9, '#1a1a1a'),
+          // Red seal/hanko (stempel).
+          rect(0.26, 0.88, 0.04, 0.025, '#b91c1c', { placement: 'foreground', radius: 0.1 }),
+          emoji('印', 0.26, 0.88, 0.02, 'foreground', 0, 1, '#fff')
+        ]
+      }
+    }
   }
 ] as const;
 
